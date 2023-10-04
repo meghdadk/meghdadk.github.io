@@ -69,9 +69,10 @@
 					<ul>
 						<!--<li class="active"><a href="#" data-nav-section="home">Home</a></li>-->
 						<li><a href="#" data-nav-section="about">About</a></li>
+						<li><a href="#" data-nav-section="blog">Research</a></li>
 						<li><a href="#" data-nav-section="education">Education</a></li>
 						<li><a href="#" data-nav-section="experience">Experience</a></li>
-						<li><a href="#" data-nav-section="blog">Research</a></li>
+						
 					</ul>
 				</div>
 			</nav>
@@ -143,6 +144,146 @@ Copyright <script>document.write(new Date().getFullYear());</script> All rights 
 			</section>
 
 
+<section class="colorlib-blog" data-section="blog">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<h2 class="colorlib-heading">Research</h2>
+						</div>
+					</div>
+					<div class="row" style="display: flex;align-items: center;">
+						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="blog-entry">
+								<a href="https://arxiv.org/pdf/2302.09880.pdf" target="_blank" class="blog-img"><img src="images/scrub.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+							</div>
+						</div>
+						<div class="col-md-8 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="blog-entry">
+								
+								<div class="desc">
+									<h3><a href="https://arxiv.org/pdf/2302.09880.pdf" target="_blank">Machine Unlearning Unbound</a></h3>
+									<span><small>ArXiv</small> | <small> M Kurmanji<sup>*</sup>, P Triantafillou, E Triantafillou </small> </span>
+									<p>Deep machine unlearning is the problem of removing the influence of a cohort of data from
+										the weights of a trained deep model. This challenge is enjoying increasing attention due to the
+										widespread use of neural networks in applications
+										involving user data: allowing users to exercise
+										their ‘right to be forgotten’ necessitates an effective unlearning algorithm. However, deleting data
+										from models is also of interest in practice for other
+										applications where individual user privacy is not
+										necessarily a consideration: removing biases, outof-date examples, outliers, or noisy labels, and
+										different such applications come with different
+										desiderata. We propose a new unlearning algorithm (coined SCRUB) and conduct a comprehensive experimental evaluation against several previous state-of-the-art models. The results reveal
+										that SCRUB is consistently a top performer across
+										three different metrics for measuring unlearning
+										quality, reflecting different application scenarios,
+										while not degrading the model’s performance.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row" style="display: flex;align-items: center;">
+						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="blog-entry">
+								<a href="https://arxiv.org/pdf/2210.05508.pdf" target="_blank" class="blog-img"><img src="images/ddup.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+							</div>
+						</div>
+						<div class="col-md-8 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="blog-entry">
+								
+								<div class="desc">
+									<h3><a href="https://arxiv.org/pdf/2210.05508.pdf" target="_blank">Detect, Distill and Update: Learned DB Systems Facing Out of Distribution Data</a></h3>
+									<span><small>SIGMOD 2023 </small> | <small> M Kurmanji<sup>*</sup>, P Triantafillou </small> </span>
+									<p>Machine Learning (ML) is changing DBs as many DB components are being replaced by ML models. 
+										One open problem in this setting is how to update such ML models in the presence of data updates. 
+										We start this investigation focusing on data insertions (dominating updates in analytical DBs). 
+										We study how to update neural network (NN) models when new data follows a different distribution (a.k.a. it is "out-of-distribution" -- OOD), rendering previously-trained NNs inaccurate. 
+										A requirement in our problem setting is that learned DB components should ensure high accuracy for tasks on old and new data (e.g., for approximate query processing (AQP), cardinality estimation (CE), synthetic data generation (DG), etc.). 
+										This paper proposes a novel updatability framework (DDUp). DDUp can provide updatability for different learned DB system components, even based on different NNs, without the high costs to retrain the NNs from scratch. DDUp entails two components: 
+										First, a novel, efficient, and principled statistical-testing approach to detect OOD data. Second, a novel model updating approach, grounded on the principles of transfer learning with knowledge distillation, to update learned models efficiently, while still ensuring high accuracy. 
+										We develop and showcase DDUp's applicability for three different learned DB components, AQP, CE, and DG, each employing a different type of NN. Detailed experimental evaluation using real and benchmark datasets for AQP, CE, and DG detail DDUp's performance advantages.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row" style="display: flex;align-items: center;">
+						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="blog-entry">
+								<a href="https://dl.acm.org/doi/abs/10.1145/3448016.3457302" target="_blank" class="blog-img"><img src="images/pgmjoin.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+							</div>
+						</div>
+						<div class="col-md-8 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="blog-entry">
+								
+								<div class="desc">
+									<h3><a href="https://dl.acm.org/doi/abs/10.1145/3448016.3457302" target="_blank">PGMJoins: Random Join Sampling with Graphical Models</a></h3>
+									<span><small>SIGMOD 2021 </small> | <small> AM Shanghooshabad<sup>*</sup>, M Kurmanji, Q Ma, M Shekelyan, M Almasi and P Triantafillou </small> </span>
+									<p>Modern databases face formidable challenges when called to join (several) massive tables. 
+										Joins (especially when entailing many-to-many joins) are very time- and resource-consuming, join results can be too big to keep in memory, and performing analytics/learning tasks over them costs dearly in terms of time, resources, and money (in the cloud). 
+										Moreover, although random sampling is a promising idea to mitigate the above problems, the current state of the art leaves lots of room for improvements. 
+										With this paper we contribute a principled solution, coined PGMJoins. PGMJoins adapts Probabilistic Graphical Models to deriving provably random samples of the join result for (n-way) key joins, many-to-many joins, and cyclic and acyclic joins. 
+										PGMJoins contributes optimizations both for deriving the structure of the graph and for PGM inference. It also contributes a novel Sum-Product Message Passing Algorithm (SP-MPA) to make a uniform sample of the joint distribution (join result) efficiently and a novel way to deal with cyclic joins. 
+										Despite the use of PGMs, the learned joint distribution is not approximated, and the uniform samples are drawn from the true distribution. Our experimentation using queries and datasets from TPC-H, JOB, TPC-DS, and Twitter shows PGMJoins to outperform the state of the art (by 2X-28X).
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row" style="display: flex;align-items: center;">
+						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="blog-entry">
+								<a href="https://15799.courses.cs.cmu.edu/spring2022/papers/21-systems3/cidr2021_paper15.pdf" target="_blank" class="blog-img"><img src="images/dbestplus.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+							</div>
+						</div>
+						<div class="col-md-8 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="blog-entry">
+								
+								<div class="desc">
+									<h3><a href="https://15799.courses.cs.cmu.edu/spring2022/papers/21-systems3/cidr2021_paper15.pdf" target="_blank">Learned approximate query processing: Make it light, accurate and fast</a></h3>
+									<span><small>CIDR 2021 </small> | <small> Q Ma<sup>*</sup>, AM Shanghooshabad, M Almasi, M Kurmanji, P Triantafillou</small> </span>
+									<p>The advent of learning algorithms has revealed many opportunities for improving Data Systems’ functionality and performance. 
+										Approximate Query Processing (AQP) is one such area where machine learning (ML) models have been used to improve query execution efficiency and accuracy, outperforming the traditional samplingbased approaches. 
+										Based on our group’s experience in the ML-for-DBs area,[3–7, 29, 37–39], we contribute a novel AQP engine, coined DBEst++, which extends our previous effort (DBEst,[29]) and sets the state of the art in terms of accuracy and query execution efficiency. 
+										The DBEst++ salient design objective is to derive lightweight ML models for the task, allowing a plethora of ML models to coexist, covering a very large fraction of the expected analytical query workload without requiring very large memory footprints. 
+										The DBEst++ salient architectural feature rests on a novel blending of word embedding models with neural networks tasked with regression-based predictions for density estimation and aggregation-attribute values. We present design features and motivations/rationale behind DBEst++ and discuss how all the ML models are brought together. 
+										We also present how DBEst++ can deal with challenging scenarios, including how to deal with highcardinality categorical attributes and how to ensure high accuracy under data updates. 
+										We provide a detailed experimental evaluation using the TPC-DS and Flights datasets against state of the art learned and sampling-based AQP engines, showcasing DBEst++’s gains in terms of accuracy, response-times, and memory space overheads.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row" style="display: flex;align-items: center;">
+						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="blog-entry">
+								<a href="https://ieeexplore.ieee.org/abstract/document/8786671" target="_blank" class="blog-img"><img src="images/handgesture.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+							</div>
+						</div>
+						<div class="col-md-8 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="blog-entry">
+								
+								<div class="desc">
+									<h3><a href="https://ieeexplore.ieee.org/abstract/document/8786671" target="_blank">A comparison of 2D and 3D convolutional neural networks for hand gesture recognition from RGB-D data</a></h3>
+									<span><small>ICEE 2019 </small> | <small> M Kurmanji<sup>*</sup>, F Ghaderi</small> </span>
+									<p>Hand gesture recognition from videos has more challenges compared with still images due to the difficulty of representing temporal features and longer training times especially in real-time applications. 
+										In this paper, we investigated the potential of 2D over 3D CNN's for representing temporal features and classification of hand gestures in videos. 
+										We mapped the frame sequence of hand gestures to a chronological tiled pattern in order to capture the dynamics of the hand movement in a single frame. 
+										Then, using 2D CNN's, we generated feature vectors containing both special and temporal features. Additionally, we proposed a new approach for fusing data and predictions through a two-stream architecture to exploit depth information. 
+										The effects of different types of augmentation techniques is also investigated. Our results confirm that appropriate usage of 2D CNNs outperforms a 3D CNN implementation in terms of recall, accuracy and time in this task
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+			
 
 			<section class="colorlib-education" data-section="education">
 				<div class="colorlib-narrow-content">
@@ -316,146 +457,6 @@ Copyright <script>document.write(new Date().getFullYear());</script> All rights 
 				</div>
 			</section>
 
-
-			<section class="colorlib-blog" data-section="blog">
-				<div class="colorlib-narrow-content">
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-							<h2 class="colorlib-heading">Research</h2>
-						</div>
-					</div>
-					<div class="row" style="display: flex;align-items: center;">
-						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="blog-entry">
-								<a href="https://arxiv.org/pdf/2302.09880.pdf" target="_blank" class="blog-img"><img src="images/scrub.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
-							</div>
-						</div>
-						<div class="col-md-8 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="blog-entry">
-								
-								<div class="desc">
-									<h3><a href="https://arxiv.org/pdf/2302.09880.pdf" target="_blank">Machine Unlearning Unbound</a></h3>
-									<span><small>ArXiv</small> | <small> M Kurmanji<sup>*</sup>, P Triantafillou, E Triantafillou </small> </span>
-									<p>Deep machine unlearning is the problem of removing the influence of a cohort of data from
-										the weights of a trained deep model. This challenge is enjoying increasing attention due to the
-										widespread use of neural networks in applications
-										involving user data: allowing users to exercise
-										their ‘right to be forgotten’ necessitates an effective unlearning algorithm. However, deleting data
-										from models is also of interest in practice for other
-										applications where individual user privacy is not
-										necessarily a consideration: removing biases, outof-date examples, outliers, or noisy labels, and
-										different such applications come with different
-										desiderata. We propose a new unlearning algorithm (coined SCRUB) and conduct a comprehensive experimental evaluation against several previous state-of-the-art models. The results reveal
-										that SCRUB is consistently a top performer across
-										three different metrics for measuring unlearning
-										quality, reflecting different application scenarios,
-										while not degrading the model’s performance.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row" style="display: flex;align-items: center;">
-						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="blog-entry">
-								<a href="https://arxiv.org/pdf/2210.05508.pdf" target="_blank" class="blog-img"><img src="images/ddup.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
-							</div>
-						</div>
-						<div class="col-md-8 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="blog-entry">
-								
-								<div class="desc">
-									<h3><a href="https://arxiv.org/pdf/2210.05508.pdf" target="_blank">Detect, Distill and Update: Learned DB Systems Facing Out of Distribution Data</a></h3>
-									<span><small>SIGMOD 2023 </small> | <small> M Kurmanji<sup>*</sup>, P Triantafillou </small> </span>
-									<p>Machine Learning (ML) is changing DBs as many DB components are being replaced by ML models. 
-										One open problem in this setting is how to update such ML models in the presence of data updates. 
-										We start this investigation focusing on data insertions (dominating updates in analytical DBs). 
-										We study how to update neural network (NN) models when new data follows a different distribution (a.k.a. it is "out-of-distribution" -- OOD), rendering previously-trained NNs inaccurate. 
-										A requirement in our problem setting is that learned DB components should ensure high accuracy for tasks on old and new data (e.g., for approximate query processing (AQP), cardinality estimation (CE), synthetic data generation (DG), etc.). 
-										This paper proposes a novel updatability framework (DDUp). DDUp can provide updatability for different learned DB system components, even based on different NNs, without the high costs to retrain the NNs from scratch. DDUp entails two components: 
-										First, a novel, efficient, and principled statistical-testing approach to detect OOD data. Second, a novel model updating approach, grounded on the principles of transfer learning with knowledge distillation, to update learned models efficiently, while still ensuring high accuracy. 
-										We develop and showcase DDUp's applicability for three different learned DB components, AQP, CE, and DG, each employing a different type of NN. Detailed experimental evaluation using real and benchmark datasets for AQP, CE, and DG detail DDUp's performance advantages.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row" style="display: flex;align-items: center;">
-						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="blog-entry">
-								<a href="https://dl.acm.org/doi/abs/10.1145/3448016.3457302" target="_blank" class="blog-img"><img src="images/pgmjoin.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
-							</div>
-						</div>
-						<div class="col-md-8 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="blog-entry">
-								
-								<div class="desc">
-									<h3><a href="https://dl.acm.org/doi/abs/10.1145/3448016.3457302" target="_blank">PGMJoins: Random Join Sampling with Graphical Models</a></h3>
-									<span><small>SIGMOD 2021 </small> | <small> AM Shanghooshabad<sup>*</sup>, M Kurmanji, Q Ma, M Shekelyan, M Almasi and P Triantafillou </small> </span>
-									<p>Modern databases face formidable challenges when called to join (several) massive tables. 
-										Joins (especially when entailing many-to-many joins) are very time- and resource-consuming, join results can be too big to keep in memory, and performing analytics/learning tasks over them costs dearly in terms of time, resources, and money (in the cloud). 
-										Moreover, although random sampling is a promising idea to mitigate the above problems, the current state of the art leaves lots of room for improvements. 
-										With this paper we contribute a principled solution, coined PGMJoins. PGMJoins adapts Probabilistic Graphical Models to deriving provably random samples of the join result for (n-way) key joins, many-to-many joins, and cyclic and acyclic joins. 
-										PGMJoins contributes optimizations both for deriving the structure of the graph and for PGM inference. It also contributes a novel Sum-Product Message Passing Algorithm (SP-MPA) to make a uniform sample of the joint distribution (join result) efficiently and a novel way to deal with cyclic joins. 
-										Despite the use of PGMs, the learned joint distribution is not approximated, and the uniform samples are drawn from the true distribution. Our experimentation using queries and datasets from TPC-H, JOB, TPC-DS, and Twitter shows PGMJoins to outperform the state of the art (by 2X-28X).
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row" style="display: flex;align-items: center;">
-						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="blog-entry">
-								<a href="https://15799.courses.cs.cmu.edu/spring2022/papers/21-systems3/cidr2021_paper15.pdf" target="_blank" class="blog-img"><img src="images/dbestplus.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
-							</div>
-						</div>
-						<div class="col-md-8 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="blog-entry">
-								
-								<div class="desc">
-									<h3><a href="https://15799.courses.cs.cmu.edu/spring2022/papers/21-systems3/cidr2021_paper15.pdf" target="_blank">Learned approximate query processing: Make it light, accurate and fast</a></h3>
-									<span><small>CIDR 2021 </small> | <small> Q Ma<sup>*</sup>, AM Shanghooshabad, M Almasi, M Kurmanji, P Triantafillou</small> </span>
-									<p>The advent of learning algorithms has revealed many opportunities for improving Data Systems’ functionality and performance. 
-										Approximate Query Processing (AQP) is one such area where machine learning (ML) models have been used to improve query execution efficiency and accuracy, outperforming the traditional samplingbased approaches. 
-										Based on our group’s experience in the ML-for-DBs area,[3–7, 29, 37–39], we contribute a novel AQP engine, coined DBEst++, which extends our previous effort (DBEst,[29]) and sets the state of the art in terms of accuracy and query execution efficiency. 
-										The DBEst++ salient design objective is to derive lightweight ML models for the task, allowing a plethora of ML models to coexist, covering a very large fraction of the expected analytical query workload without requiring very large memory footprints. 
-										The DBEst++ salient architectural feature rests on a novel blending of word embedding models with neural networks tasked with regression-based predictions for density estimation and aggregation-attribute values. We present design features and motivations/rationale behind DBEst++ and discuss how all the ML models are brought together. 
-										We also present how DBEst++ can deal with challenging scenarios, including how to deal with highcardinality categorical attributes and how to ensure high accuracy under data updates. 
-										We provide a detailed experimental evaluation using the TPC-DS and Flights datasets against state of the art learned and sampling-based AQP engines, showcasing DBEst++’s gains in terms of accuracy, response-times, and memory space overheads.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row" style="display: flex;align-items: center;">
-						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="blog-entry">
-								<a href="https://ieeexplore.ieee.org/abstract/document/8786671" target="_blank" class="blog-img"><img src="images/handgesture.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
-							</div>
-						</div>
-						<div class="col-md-8 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="blog-entry">
-								
-								<div class="desc">
-									<h3><a href="https://ieeexplore.ieee.org/abstract/document/8786671" target="_blank">A comparison of 2D and 3D convolutional neural networks for hand gesture recognition from RGB-D data</a></h3>
-									<span><small>ICEE 2019 </small> | <small> M Kurmanji<sup>*</sup>, F Ghaderi</small> </span>
-									<p>Hand gesture recognition from videos has more challenges compared with still images due to the difficulty of representing temporal features and longer training times especially in real-time applications. 
-										In this paper, we investigated the potential of 2D over 3D CNN's for representing temporal features and classification of hand gestures in videos. 
-										We mapped the frame sequence of hand gestures to a chronological tiled pattern in order to capture the dynamics of the hand movement in a single frame. 
-										Then, using 2D CNN's, we generated feature vectors containing both special and temporal features. Additionally, we proposed a new approach for fusing data and predictions through a two-stream architecture to exploit depth information. 
-										The effects of different types of augmentation techniques is also investigated. Our results confirm that appropriate usage of 2D CNNs outperforms a 3D CNN implementation in terms of recall, accuracy and time in this task
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</section>
 
 
 
