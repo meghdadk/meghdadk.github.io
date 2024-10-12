@@ -160,6 +160,36 @@ Copyright <script>document.write(new Date().getFullYear());</script> All rights 
 							<h2 class="colorlib-heading">Research</h2>
 						</div>
 					</div>
+
+
+					<div class="row" style="display: flex;align-items: center;">
+						<div class="col-md-4 col-sm-6">
+							<div class="blog-entry">
+								<a href="https://arxiv.org/pdf/2406.01257" target="_blank" class="blog-img"><img src="images/ADDPHOTO.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+							</div>
+						</div>
+						<div class="col-md-8 col-sm-6">
+							<div class="blog-entry">
+								
+								<div class="desc">
+									<h3><a href="https://arxiv.org/pdf/2406.01257" target="_blank">What makes unlearning hard and what to do about it</a></h3>
+									<span><small>NeurIPS 2024</small> | <small> K Zhao <sup>*</sup>, M Kurmanji, G Bărbulescu, E Triantafillou, P Triantafillou </small> </span>
+									<p>Machine unlearning is the problem of removing the effect of a subset of training data (the “forget set”) from a trained model e.g. to comply with users’ requests to delete their data, or remove mislabeled, poisoned or otherwise problematic data. 
+										With unlearning research still being at its infancy, many fundamental open questions exist: Are there interpretable characteristics of forget sets that substantially affect the difficulty of the problem? 
+										How do these characteristics affect different state-of-the-art algorithms? We present the first investigation into these questions. 
+										We identify two key factors affecting unlearning difficulty and the performance of unlearning algorithms. 
+										Our evaluation on forget sets that isolate these identified factors reveals previously-unknown behaviours of state-of-the-art algorithms that don’t materialize on random forget sets. 
+										Based on our insights, we develop a framework coined Refined-Unlearning Meta-algorithm (RUM) that encompasses: 
+										(i) refining the forget set into homogenized subsets, according to different characteristics; and (ii) a meta-algorithm that employs existing algorithms to unlearn each subset and finally delivers a model that has unlearned the overall forget set. 
+										RUM substantially improves top-performing unlearning algorithms. Overall, we view our work as an important step in deepening our scientific understanding of unlearning and revealing new pathways to improving the state-of-the-art.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					
 					<div class="row" style="display: flex;align-items: center;">
 						<div class="col-md-4 col-sm-6">
 							<div class="blog-entry">
@@ -191,6 +221,41 @@ Copyright <script>document.write(new Date().getFullYear());</script> All rights 
 							</div>
 						</div>
 					</div>
+
+
+
+					<div class="row" style="display: flex;align-items: center;">
+						<div class="col-md-4 col-sm-6">
+							<div class="blog-entry">
+								<a href="https://dl.acm.org/doi/pdf/10.1145/3639304" target="_blank" class="blog-img"><img src="images/ADDPHOTO.png" class="img-responsive" alt="HTML5 Bootstrap Template by colorlib.com"></a>
+							</div>
+						</div>
+						<div class="col-md-8 col-sm-6">
+							<div class="blog-entry">
+								
+								<div class="desc">
+									<h3><a href="https://dl.acm.org/doi/pdf/10.1145/3639304" target="_blank">Machine Unlearning in Learned Databases</a></h3>
+									<span><small>SIGMOD 2024</small> | <small> M Kurmanji<sup>*</sup>, E Triantafillou,  P Triantafillou </small> </span>
+									<p>Deep Machine learning models based on neural networks (NNs) are enjoying ever-increasing attention in the Database (DB) community, both in research and practice. 
+										However, an important issue has been largely overlooked, namely the challenge of dealing with the inherent, highly dynamic nature of DBs, where data updates are fundamental, highly-frequent operations (unlike, for instance, in ML classification tasks). 
+										Although some recent research has addressed the issues of maintaining updated NN models in the presence of new data insertions, the effects of data deletions (a.k.a., "machine unlearning") remain a blind spot. 
+										With this work, for the first time to our knowledge, we pose and answer the following key questions: What is the effect of unlearning algorithms on NN-based DB models? 
+										How do these effects translate to effects on key downstream DB tasks, such as cardinality/selectivity estimation (SE), approximate query processing (AQP), data generation (DG), and upstream tasks like data classification (DC)? 
+										What metrics should we use to assess the impact and efficacy of unlearning algorithms in learned DBs? 
+										Is the problem of (and solutions for) machine unlearning in DBs different from that of machine learning in DBs in the face of data insertions? 
+										Is the problem of (and solutions for) machine unlearning for DBs different from unlearning in the ML literature? 
+										what are the overhead and efficiency of unlearning algorithms (versus the naive solution of retraining from scratch)? 
+										What is the sensitivity of unlearning on batching delete operations (in order to reduce model updating overheads)? 
+										If we have a suitable unlearning algorithm (forgetting old knowledge), can we combine it with an algorithm handling data insertions (new knowledge) en route to solving the general adaptability/updatability requirement in learned DBs in the face of both data inserts and deletes? 
+										We answer these questions using a comprehensive set of experiments, various unlearning algorithms, a variety of downstream DB tasks (such as SE, AQP, and DG), and an upstream task (DC), each with different NNs, 
+										and using a variety of metrics (model-internal, and downstream-task specific) on a variety of real datasets, making this also a first key step towards a benchmark for learned DB unlearning.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>					
+					
+					
 
 					<div class="row" style="display: flex;align-items: center;">
 						<div class="col-md-4 col-sm-6">
