@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" role="img" aria-labelledby="title desc">
+  <title id="title">Publication video placeholder</title>
+  <desc id="desc">Placeholder artwork for a paper video preview.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#132033"/>
+      <stop offset="100%" stop-color="#365c8d"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="320" fill="url(#bg)" rx="28"/>
+  <circle cx="400" cy="160" r="66" fill="#f8f1df" opacity="0.96"/>
+  <polygon points="385,126 385,194 445,160" fill="#1f4b99"/>
+  <text x="400" y="274" font-family="Georgia, serif" font-size="28" fill="#f8f1df" text-anchor="middle">Add paper video here</text>
+</svg>

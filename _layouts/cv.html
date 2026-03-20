@@ -1,0 +1,591 @@
+---
+layout: default
+---
+<style>
+  .cv-layout {
+    display: grid;
+    grid-template-columns: minmax(13rem, 16rem) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0;
+  }
+
+  .cv-layout > [class*='col-'] {
+    max-width: none;
+    padding: 0;
+  }
+
+  .cv-layout > aside {
+    width: 100%;
+  }
+
+  .cv-layout > div {
+    min-width: 0;
+  }
+
+  #toc-sidebar {
+    top: 5.5rem;
+    z-index: 1;
+  }
+
+  #toc-sidebar .toc-title {
+    margin-bottom: 0.75rem;
+    color: var(--global-text-color-light);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  #toc-sidebar .nav {
+    padding: 0.85rem 0.35rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 16px;
+    background: var(--global-card-bg-color);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+  }
+
+  #toc-sidebar .nav-link {
+    color: var(--global-text-color-light);
+    border-left: 2px solid transparent;
+    border-radius: 0;
+    transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+  }
+
+  #toc-sidebar .nav-link:hover,
+  #toc-sidebar .nav-link:focus,
+  #toc-sidebar .nav-link.active,
+  #toc-sidebar .nav-link.active:hover,
+  #toc-sidebar .nav-link.active:focus {
+    color: var(--global-theme-color);
+    border-left-color: var(--global-theme-color);
+    background-color: transparent;
+  }
+
+  .cv-section {
+    scroll-margin-top: 6.5rem;
+  }
+
+  .cv .card {
+    border: 1px solid var(--global-divider-color);
+    border-radius: 18px;
+    background: var(--global-card-bg-color);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  }
+
+  .cv .card .card-title {
+    margin-bottom: 1rem;
+  }
+
+  .cv .card p:last-child,
+  .cv .card ul:last-child,
+  .cv .card table:last-child {
+    margin-bottom: 0;
+  }
+
+  html[data-theme="dark"] #toc-sidebar .nav,
+  html[data-theme="dark"] .cv .card {
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+  }
+
+  @media (max-width: 767.98px) {
+    .cv-layout {
+      display: block;
+    }
+
+    #toc-sidebar {
+      position: static !important;
+      top: auto;
+      margin-bottom: 1rem;
+    }
+  }
+</style>
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      {{ page.title }}
+      {% if page.cv_pdf %}
+        <a
+          {% if page.cv_pdf contains '://' %}
+            href="{{ page.cv_pdf }}"
+          {% else %}
+            href="{{ page.cv_pdf | relative_url }}"
+          {% endif %}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="float-right"
+        >
+          <i class="fa-solid fa-file-pdf"></i>
+        </a>
+      {% endif %}
+    </h1>
+    {% if page.description %}
+      <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <article>
+    <div class="cv">
+      {% assign render_rendercv = false %}
+      {% assign render_jsonresume = false %}
+      {% assign has_contact = false %}
+      {% assign has_summary = false %}
+      {% assign hidden_cv_sections = 'Languages|Interests|Academic Interests|Certificates|Projects|Open Source Projects|References' | split: '|' %}
+
+      {% if page.cv_format == 'rendercv' %}
+        {% assign render_rendercv = true %}
+      {% elsif page.cv_format == 'jsonresume' %}
+        {% assign render_jsonresume = true %}
+      {% else %}
+        {% if site.data.cv and site.data.cv.cv %}
+          {% assign render_rendercv = true %}
+        {% elsif site.data.resume %}
+          {% assign render_jsonresume = true %}
+        {% endif %}
+      {% endif %}
+
+      {% if render_rendercv and site.data.cv and site.data.cv.cv %}
+        {% assign cv = site.data.cv.cv %}
+        {% if cv.name or cv.label or cv.location or cv.email or cv.phone or cv.website %}
+          {% assign has_contact = true %}
+        {% endif %}
+        {% if cv.summary %}
+          {% assign has_summary = true %}
+        {% endif %}
+      {% elsif render_jsonresume and site.data.resume %}
+        {% if site.data.resume.basics %}
+          {% assign has_contact = true %}
+        {% endif %}
+        {% if site.data.resume.basics.summary %}
+          {% assign has_summary = true %}
+        {% endif %}
+      {% endif %}
+
+      {% if render_rendercv and site.data.cv and site.data.cv.cv %}
+        <div class="row cv-layout">
+          <aside class="col-lg-3 mb-3 mb-lg-0">
+            <nav id="toc-sidebar" class="position-sticky" aria-label="CV section navigation">
+              <div class="toc-title">Jump to</div>
+              <div class="nav flex-column">
+                {% if has_contact %}
+                  <a class="nav-link" href="#contact-information">Contact Information</a>
+                {% endif %}
+                {% if has_summary %}
+                  <a class="nav-link" href="#professional-summary">Professional Summary</a>
+                {% endif %}
+                {% assign empty_array = '' | split: ',' %}
+                {% assign exp = cv.sections.Experience | default: empty_array %}
+                {% if exp.size > 0 %}
+                  <a class="nav-link" href="#experience">Experience</a>
+                {% endif %}
+                {% for section_pair in cv.sections %}
+                  {% assign section_title = section_pair[0] %}
+                  {% if section_title == 'Experience' or section_title == 'Volunteer' or hidden_cv_sections contains section_title %}
+                    {% continue %}
+                  {% endif %}
+                  <a class="nav-link" href="#{{ section_title | slugify }}">{{ section_title }}</a>
+                {% endfor %}
+              </div>
+            </nav>
+          </aside>
+
+          <div class="col-lg-9">
+        {% assign cv = site.data.cv.cv %}
+
+        {% if cv.name or cv.label or cv.location or cv.email or cv.phone or cv.website %}
+          <div class="card mt-3 p-3 cv-section" id="contact-information">
+            <h3 class="card-title font-weight-medium">Contact Information</h3>
+            <table class="table table-cv table-sm table-borderless">
+              {% if cv.name %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Name</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ cv.name }}</td>
+                </tr>
+              {% endif %}
+              {% if cv.label %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Professional Title</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ cv.label }}</td>
+                </tr>
+              {% endif %}
+              {% if cv.email %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Email</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ cv.email }}</td>
+                </tr>
+              {% endif %}
+              {% if cv.phone %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Phone</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ cv.phone }}</td>
+                </tr>
+              {% endif %}
+              {% if cv.location or cv.address %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Location</b></td>
+                  <td class="p-1 pl-2 font-weight-light">
+                    {% if cv.location %}
+                      {{ cv.location }}
+                    {% elsif cv.address.city or cv.address.region %}
+                      {% if cv.address.city %}{{ cv.address.city }}{% endif %}{% if cv.address.city and cv.address.region %}, {% endif %}{% if cv.address.region %}{{ cv.address.region }}{% endif %}
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endif %}
+              {% if cv.website %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Website</b></td>
+                  <td class="p-1 pl-2 font-weight-light">
+                    <a href="{{ cv.website }}" target="_blank">{{ cv.website }}</a>
+                  </td>
+                </tr>
+              {% endif %}
+            </table>
+          </div>
+        {% endif %}
+
+        {% if cv.summary %}
+          <div class="card mt-3 p-3 cv-section" id="professional-summary">
+            <h3 class="card-title font-weight-medium">Professional Summary</h3>
+            <p>{{ cv.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          </div>
+        {% endif %}
+
+        {% assign empty_array = '' | split: ',' %}
+        {% assign exp = cv.sections.Experience | default: empty_array %}
+        {% if exp.size > 0 %}
+          <div class="card mt-3 p-3 cv-section" id="experience">
+            <h3 class="card-title font-weight-medium">Experience</h3>
+            <div>
+              {% assign entries = exp %}
+              {% include cv/experience.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% for section_pair in cv.sections %}
+          {% assign section_title = section_pair[0] %}
+          {% assign section_entries = section_pair[1] %}
+
+          {% if section_title == 'Experience' or section_title == 'Volunteer' or hidden_cv_sections contains section_title %}
+            {% continue %}
+          {% endif %}
+
+          <div class="card mt-3 p-3 cv-section" id="{{ section_title | slugify }}">
+            <h3 class="card-title font-weight-medium">{{ section_title }}</h3>
+            <div>
+              {% if section_title == 'Education' %}
+                {% assign entries = section_entries %}
+                {% include cv/education.liquid %}
+              {% elsif section_title == 'Awards' or section_title == 'Honors and Awards' %}
+                {% assign entries = section_entries %}
+                {% include cv/awards.liquid %}
+              {% elsif section_title == 'Publications' %}
+                {% assign entries = section_entries %}
+                {% include cv/publications.liquid %}
+              {% elsif section_title == 'Skills' %}
+                {% assign entries = section_entries %}
+                {% include cv/skills.liquid %}
+              {% elsif section_title == 'Languages' %}
+                {% assign entries = section_entries %}
+                {% include cv/languages.liquid %}
+              {% elsif section_title == 'Interests' or section_title == 'Academic Interests' %}
+                {% assign entries = section_entries %}
+                {% include cv/interests.liquid %}
+              {% elsif section_title == 'Certificates' %}
+                {% assign entries = section_entries %}
+                {% include cv/certificates.liquid %}
+              {% elsif section_title == 'Projects' or section_title == 'Open Source Projects' %}
+                {% assign entries = section_entries %}
+                {% include cv/projects.liquid %}
+              {% elsif section_title == 'References' %}
+                {% assign entries = section_entries %}
+                {% include cv/references.liquid %}
+              {% else %}
+                {% for entry in section_entries %}
+                  {% if entry.bullet %}
+                    <ul class="card-text font-weight-light list-group list-group-flush">
+                      <li class="list-group-item">{{ entry.bullet | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+                    </ul>
+                  {% elsif entry.label %}
+                    <div class="card-text font-weight-light">
+                      <strong>{{ entry.label }}:</strong> {{ entry.details }}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+          </div>
+        </div>
+
+      {% elsif render_jsonresume and site.data.resume %}
+        <div class="row cv-layout">
+          <aside class="col-lg-3 mb-3 mb-lg-0">
+            <nav id="toc-sidebar" class="position-sticky" aria-label="CV section navigation">
+              <div class="toc-title">Jump to</div>
+              <div class="nav flex-column">
+                {% if has_contact %}
+                  <a class="nav-link" href="#contact-information">Contact Information</a>
+                {% endif %}
+                {% if has_summary %}
+                  <a class="nav-link" href="#professional-summary">Professional Summary</a>
+                {% endif %}
+                {% assign empty_array = '' | split: ',' %}
+                {% assign work = site.data.resume.work | default: empty_array %}
+                {% if work.size > 0 %}
+                  <a class="nav-link" href="#experience">Experience</a>
+                {% endif %}
+                {% if site.data.resume.education.size > 0 %}
+                  <a class="nav-link" href="#education">Education</a>
+                {% endif %}
+                {% if site.data.resume.awards.size > 0 %}
+                  <a class="nav-link" href="#awards">Awards</a>
+                {% endif %}
+                {% if site.data.resume.publications.size > 0 %}
+                  <a class="nav-link" href="#publications">Publications</a>
+                {% endif %}
+                {% if site.data.resume.skills.size > 0 %}
+                  <a class="nav-link" href="#skills">Skills</a>
+                {% endif %}
+                {% if site.data.resume.languages.size > 0 %}
+                  <a class="nav-link" href="#languages">Languages</a>
+                {% endif %}
+                {% if site.data.resume.interests.size > 0 %}
+                  <a class="nav-link" href="#interests">Interests</a>
+                {% endif %}
+                {% if site.data.resume.certificates.size > 0 %}
+                  <a class="nav-link" href="#certificates">Certificates</a>
+                {% endif %}
+                {% if site.data.resume.projects.size > 0 %}
+                  <a class="nav-link" href="#projects">Projects</a>
+                {% endif %}
+                {% if site.data.resume.references.size > 0 %}
+                  <a class="nav-link" href="#references">References</a>
+                {% endif %}
+              </div>
+            </nav>
+          </aside>
+
+          <div class="col-lg-9">
+        {% if site.data.resume.basics %}
+          <div class="card mt-3 p-3 cv-section" id="contact-information">
+            <h3 class="card-title font-weight-medium">Contact Information</h3>
+            {% assign basics = site.data.resume.basics %}
+            <table class="table table-cv table-sm table-borderless">
+              {% if basics.name %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Name</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ basics.name }}</td>
+                </tr>
+              {% endif %}
+              {% if basics.label %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Professional Title</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ basics.label }}</td>
+                </tr>
+              {% endif %}
+              {% if basics.email %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Email</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ basics.email }}</td>
+                </tr>
+              {% endif %}
+              {% if basics.phone %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Phone</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ basics.phone }}</td>
+                </tr>
+              {% endif %}
+              {% if basics.location %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Location</b></td>
+                  <td class="p-1 pl-2 font-weight-light">
+                    {% if basics.location.address %}{{ basics.location.address }}, {% endif %}
+                    {% if basics.location.city %}{{ basics.location.city }}, {% endif %}
+                    {% if basics.location.region %}{{ basics.location.region }} {% endif %}
+                    {% if basics.location.postalCode %}{{ basics.location.postalCode }}{% endif %}
+                  </td>
+                </tr>
+              {% endif %}
+              {% if basics.url %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Website</b></td>
+                  <td class="p-1 pl-2 font-weight-light">
+                    <a href="{{ basics.url }}" target="_blank">{{ basics.url }}</a>
+                  </td>
+                </tr>
+              {% endif %}
+            </table>
+          </div>
+        {% endif %}
+
+        {% if site.data.resume.basics.summary %}
+          <div class="card mt-3 p-3 cv-section" id="professional-summary">
+            <h3 class="card-title font-weight-medium">Professional Summary</h3>
+            <p>{{ site.data.resume.basics.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          </div>
+        {% endif %}
+
+        {% assign empty_array = '' | split: ',' %}
+        {% assign work = site.data.resume.work | default: empty_array %}
+        {% if work.size > 0 %}
+          <div class="card mt-3 p-3 cv-section" id="experience">
+            <h3 class="card-title font-weight-medium">Experience</h3>
+            <div>
+              {% assign entries = work %}
+              {% include cv/experience.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if site.data.resume.education.size > 0 %}
+          <div class="card mt-3 p-3 cv-section" id="education">
+            <h3 class="card-title font-weight-medium">Education</h3>
+            <div>
+              {% assign entries = site.data.resume.education %}
+              {% include cv/education.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if site.data.resume.awards.size > 0 %}
+          <div class="card mt-3 p-3 cv-section" id="awards">
+            <h3 class="card-title font-weight-medium">Awards</h3>
+            <div>
+              {% assign entries = site.data.resume.awards %}
+              {% include cv/awards.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if site.data.resume.publications.size > 0 %}
+          <div class="card mt-3 p-3 cv-section" id="publications">
+            <h3 class="card-title font-weight-medium">Publications</h3>
+            <div>
+              {% assign entries = site.data.resume.publications %}
+              {% include cv/publications.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if site.data.resume.skills.size > 0 %}
+          <div class="card mt-3 p-3 cv-section" id="skills">
+            <h3 class="card-title font-weight-medium">Skills</h3>
+            <div>
+              {% assign entries = site.data.resume.skills %}
+              {% include cv/skills.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if site.data.resume.languages.size > 0 %}
+          <div class="card mt-3 p-3 cv-section" id="languages">
+            <h3 class="card-title font-weight-medium">Languages</h3>
+            <div>
+              {% assign entries = site.data.resume.languages %}
+              {% include cv/languages.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if site.data.resume.interests.size > 0 %}
+          <div class="card mt-3 p-3 cv-section" id="interests">
+            <h3 class="card-title font-weight-medium">Interests</h3>
+            <div>
+              {% assign entries = site.data.resume.interests %}
+              {% include cv/interests.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if site.data.resume.certificates.size > 0 %}
+          <div class="card mt-3 p-3 cv-section" id="certificates">
+            <h3 class="card-title font-weight-medium">Certificates</h3>
+            <div>
+              {% assign entries = site.data.resume.certificates %}
+              {% include cv/certificates.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if site.data.resume.projects.size > 0 %}
+          <div class="card mt-3 p-3 cv-section" id="projects">
+            <h3 class="card-title font-weight-medium">Projects</h3>
+            <div>
+              {% assign entries = site.data.resume.projects %}
+              {% include cv/projects.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if site.data.resume.references.size > 0 %}
+          <div class="card mt-3 p-3 cv-section" id="references">
+            <h3 class="card-title font-weight-medium">References</h3>
+            <div>
+              {% assign entries = site.data.resume.references %}
+              {% include cv/references.liquid %}
+            </div>
+          </div>
+        {% endif %}
+          </div>
+        </div>
+
+      {% else %}
+        <p>No CV data found. Please configure either RenderCV (cv.yml) or JSONResume (resume.json) data.</p>
+      {% endif %}
+    </div>
+  </article>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.getElementById("toc-sidebar");
+    if (!sidebar) return;
+
+    const links = Array.from(sidebar.querySelectorAll(".nav-link"));
+    const sections = links
+      .map((link) => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    if (!links.length || !sections.length || typeof IntersectionObserver === "undefined") {
+      return;
+    }
+
+    const setActiveLink = (id) => {
+      links.forEach((link) => {
+        const isActive = link.getAttribute("href") === "#" + id;
+        link.classList.toggle("active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "true");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visibleEntries.length > 0) {
+          setActiveLink(visibleEntries[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-25% 0px -60% 0px",
+        threshold: 0.1,
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    const initialSection = sections.find((section) => section.getBoundingClientRect().top >= 0) || sections[0];
+    setActiveLink(initialSection.id);
+  });
+</script>

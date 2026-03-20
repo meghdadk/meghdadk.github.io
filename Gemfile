@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.3"
+gem "webrick", "~> 1.8"
+gem "jekyll-remote-theme", "~> 0.4"
+gem "jekyll-scholar", "~> 7.1"
+gem "jekyll-feed", "~> 0.17"
+gem "jekyll-seo-tag", "~> 2.8"
+gem "jekyll-toc", "~> 0.19"
+gem "jekyll-socials", "~> 0.0.7"

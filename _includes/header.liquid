@@ -1,0 +1,222 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+>
+
+<script>
+  (function () {
+    var stored = localStorage.getItem("theme");
+    var themeSetting = stored === "light" || stored === "dark" ? stored : "system";
+    var theme =
+      themeSetting === "system"
+        ? (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+        : themeSetting;
+
+    document.documentElement.setAttribute("data-theme-setting", themeSetting);
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+
+<style>
+  :root {
+    --navbar-text: #171b26;
+    --navbar-muted: #5c6475;
+  }
+
+  html[data-theme="dark"] {
+    --navbar-text: #edf2fb;
+    --navbar-muted: #bcc6d8;
+  }
+
+  #navbar {
+    background: rgba(239, 239, 239, 0.86) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(22, 28, 45, 0.12);
+  }
+
+  html[data-theme="dark"] #navbar {
+    background: rgba(18, 21, 27, 0.82) !important;
+    border-bottom-color: rgba(233, 238, 248, 0.12);
+  }
+
+  .navbar-shell {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .navbar-shell,
+  .navbar-shell a,
+  .navbar-shell .nav-link {
+    color: var(--navbar-text) !important;
+  }
+
+  .navbar-identity {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 1.75rem;
+    color: inherit;
+    text-decoration: none !important;
+    line-height: 1.05;
+  }
+
+  .navbar-identity:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .navbar-identity-name {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  .navbar-identity-role {
+    margin-top: 0.16rem;
+    color: var(--navbar-muted);
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .navbar-toggler {
+    margin-left: auto;
+  }
+
+  #navbarNav {
+    flex-grow: 1;
+  }
+
+  #navbarNav .navbar-nav {
+    align-items: center;
+  }
+
+  #navbarNav .nav-link,
+  .navbar-identity-name {
+    font-family: inherit;
+  }
+
+  @media (max-width: 640px) {
+    .navbar-shell {
+      align-items: flex-start;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 0.15rem;
+      padding-bottom: 0.15rem;
+    }
+
+    .navbar-identity {
+      margin-right: 1rem;
+    }
+
+    .navbar-identity-role {
+      font-size: 0.7rem;
+    }
+  }
+</style>
+
+<header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm sticky-top" role="navigation">
+    <div class="navbar-shell">
+      {% assign nav_pages = site.pages | where: "nav", true | sort: "nav_order" %}
+      {% assign current_url = page.url | replace: "index.html", "" %}
+
+      {% unless current_url == "/" %}
+        <a class="navbar-identity" href="{{ '/' | relative_url }}">
+          <span class="navbar-identity-name">{{ site.title }}</span>
+          <span class="navbar-identity-role">{{ site.description }}</span>
+        </a>
+      {% endunless %}
+
+      <!-- Navbar Toggle -->
+      <button
+        class="navbar-toggler collapsed ml-auto"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap align-items-sm-center">
+          {% for nav_page in nav_pages %}
+            {% assign nav_url = nav_page.url | replace: "index.html", "" %}
+            <li class="nav-item {% if current_url == nav_url %}active{% endif %}">
+              <a class="nav-link" href="{{ nav_page.url | relative_url }}">
+                {{ nav_page.title }}
+                {% if current_url == nav_url %}
+                  <span class="sr-only">(current)</span>
+                {% endif %}
+              </a>
+            </li>
+          {% endfor %}
+          <li class="nav-item d-flex align-items-center">
+            <button id="light-toggle" type="button" title="Toggle light and dark mode" aria-label="Toggle light and dark mode">
+              <span id="light-toggle-system" aria-hidden="true">◐</span>
+              <span id="light-toggle-dark" aria-hidden="true">☾</span>
+              <span id="light-toggle-light" aria-hidden="true">☀</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  (function () {
+    function storedSetting() {
+      var value = localStorage.getItem("theme");
+      return value === "light" || value === "dark" ? value : "system";
+    }
+
+    function computedTheme(setting) {
+      if (setting === "system") {
+        return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      return setting;
+    }
+
+    function applyTheme(setting) {
+      document.documentElement.setAttribute("data-theme-setting", setting);
+      document.documentElement.setAttribute("data-theme", computedTheme(setting));
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var toggle = document.getElementById("light-toggle");
+      if (!toggle) return;
+
+      applyTheme(storedSetting());
+
+      toggle.addEventListener("click", function () {
+        var nextTheme = computedTheme(storedSetting()) === "dark" ? "light" : "dark";
+        localStorage.setItem("theme", nextTheme);
+        applyTheme(nextTheme);
+      });
+    });
+
+    if (window.matchMedia) {
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+        if (storedSetting() === "system") {
+          applyTheme("system");
+        }
+      });
+    }
+  })();
+</script>

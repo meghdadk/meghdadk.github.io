@@ -1,0 +1,60 @@
+title: Meghdad Kurmanji
+description: AI Research Scientist at IQVIA | Visiting Research Fellow at University of Cambridge
+baseurl: ""
+url: "https://meghdadk.github.io"
+
+# Use al-folio as remote theme
+remote_theme: alshedivat/al-folio
+plugins:
+  - jekyll-remote-theme
+  - jekyll/scholar
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-toc
+  - jekyll-socials
+
+# Site behavior
+lang: en
+timezone: Europe/London
+max_width: 1180px
+markdown: kramdown
+include:
+  - _pages
+
+collections:
+  news:
+    defaults:
+      layout: post
+    output: true
+    permalink: /news/:path/
+
+# Navbar / pages are controlled by `nav: true` in page front matter.
+
+# Scholar configuration for publications page
+scholar:
+  style: apa
+  locale: en
+  source: _bibliography
+  bibliography: papers.bib
+  sort_by: year,month
+  order: descending
+  group_by: year
+  group_order: descending
+
+# Social links
+email: meghdadkurmanji@gmail.com
+linkedin_username: meghdadk
+github_username: meghdadk
+google_scholar_id: 7t9HbecAAAAJ
+twitter_username: MeghdadKurmanji
+
+# Feature toggles
+enable_google_analytics: false
+enable_crisp: false
+enable_math: false
+
+exclude:
+  - index.html
+  - linkedin.txt
+  - CV.pdf
+  - README.md

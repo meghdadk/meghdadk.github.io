@@ -1,0 +1,99 @@
+---
+---
+{% assign venue = entry.booktitle | default: entry.journal | default: entry.publisher %}
+{% assign paper_url = entry.pdf | default: entry.url | default: entry.doi %}
+<div class="publication-card">
+  <div class="publication-media">
+    {% if entry.preview %}
+      <a class="publication-preview" href="{{ paper_url }}" aria-label="Open preview for {{ entry.title | escape }}">
+        <img src="{{ entry.preview }}" alt="Preview for {{ entry.title | escape }}">
+      </a>
+    {% else %}
+      <div class="publication-preview" aria-hidden="true">
+        <img src="{{ '/assets/images/publication-placeholder.svg' | relative_url }}" alt="">
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="publication-copy">
+    <div class="publication-badges">
+      {% if entry.abbr %}
+        <span class="publication-abbr">{{ entry.abbr }}</span>
+      {% endif %}
+      {% if entry.note %}
+        <span class="publication-status">{{ entry.note }}</span>
+      {% endif %}
+    </div>
+
+    <h3 class="publication-title">
+      {% if paper_url %}
+        <a href="{{ paper_url }}">{{ entry.title }}</a>
+      {% else %}
+        {{ entry.title }}
+      {% endif %}
+    </h3>
+
+    {% if entry.author_array %}
+      <p class="publication-authors">
+        {% assign total_authors = entry.author_array | size %}
+        {% for author in entry.author_array %}
+          {% assign given_name = author.first | default: author.given %}
+          {% assign family_name = author.last | default: author.family %}
+          {% assign author_name = given_name | append: ' ' | append: family_name %}
+          {% if family_name == 'Kurmanji' and given_name == 'Meghdad' %}
+            <strong>{{ author_name }}</strong>
+          {% else %}
+            {{ author_name }}
+          {% endif %}
+          {% if forloop.rindex0 > 1 %}
+            ,
+          {% elsif forloop.rindex0 == 1 %}
+            {% if total_authors > 2 %},{% endif %} and
+          {% endif %}
+        {% endfor %}
+      </p>
+    {% endif %}
+
+    <p class="publication-meta">
+      {% if venue %}<em>{{ venue }}</em>{% endif %}
+      {% if venue and entry.year %} · {% endif %}
+      {% if entry.year %}{{ entry.year }}{% endif %}
+    </p>
+
+    {% if entry.abstract %}
+      <p class="publication-abstract">{{ entry.abstract }}</p>
+    {% endif %}
+
+    {% if entry.award %}
+      <p class="publication-note">{{ entry.award }}</p>
+    {% endif %}
+
+    <div class="publication-links">
+      {% if paper_url %}
+        <a href="{{ paper_url }}">Paper</a>
+      {% endif %}
+      {% if entry.code %}
+        <a href="{{ entry.code }}">Code</a>
+      {% endif %}
+      {% if entry.slides %}
+        <a href="{{ entry.slides }}">Slides</a>
+      {% endif %}
+      {% if entry.poster %}
+        <a href="{{ entry.poster }}">Poster</a>
+      {% endif %}
+      {% if entry.website %}
+        <a href="{{ entry.website }}">Project</a>
+      {% endif %}
+      {% if entry.video %}
+        <a href="{{ entry.video }}">Video</a>
+      {% endif %}
+      {% if entry.bibtex %}
+        <a href="#{{ entry.key }}">BibTeX</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<details class="mt-3">
+  <summary>BibTeX</summary>
+  <pre id="{{ entry.key }}">{{ entry.bibtex }}</pre>
+</details>

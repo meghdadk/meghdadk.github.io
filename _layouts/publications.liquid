@@ -1,0 +1,193 @@
+---
+layout: default
+---
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+  </header>
+
+  <article class="publications-shell">
+    <style>
+      .publications-shell {
+        display: grid;
+        gap: 2rem;
+      }
+
+      .publications-shell .publications-intro {
+        max-width: 52rem;
+        margin: 0;
+        color: var(--global-text-color-light, #5f6b7a);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .publications-shell h2.bibliography {
+        margin: 1rem 0 0;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid rgba(25, 35, 52, 0.12);
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .publications-shell ol.bibliography {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .publications-shell ol.bibliography > li {
+        margin: 0;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(25, 35, 52, 0.08);
+      }
+
+      .publication-card {
+        display: grid;
+        grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+        gap: 1.5rem;
+        align-items: start;
+      }
+
+      .publication-media {
+        display: block;
+      }
+
+      .publication-preview {
+        display: block;
+        overflow: hidden;
+        border: 1px solid rgba(25, 35, 52, 0.12);
+        border-radius: 1.1rem;
+        background: #f5f1e8;
+        box-shadow: 0 14px 30px rgba(20, 27, 45, 0.08);
+      }
+
+      .publication-preview img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .publication-copy {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .publication-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .publication-abbr,
+      .publication-status {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 1.8rem;
+        padding: 0.2rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .publication-abbr {
+        background: #1f4b99;
+        color: #fff;
+      }
+
+      .publication-status {
+        background: rgba(31, 75, 153, 0.08);
+        color: #1f4b99;
+      }
+
+      .publication-title {
+        margin: 0;
+        font-size: 1.32rem;
+        line-height: 1.3;
+      }
+
+      .publication-title a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .publication-title a:hover {
+        color: #1f4b99;
+      }
+
+      .publication-authors,
+      .publication-meta,
+      .publication-abstract,
+      .publication-note {
+        margin: 0;
+      }
+
+      .publication-authors,
+      .publication-meta {
+        color: var(--global-text-color-light, #5f6b7a);
+        line-height: 1.7;
+      }
+
+      .publication-meta {
+        font-size: 0.97rem;
+      }
+
+      .publication-note {
+        color: #9a6700;
+        font-weight: 600;
+      }
+
+      .publication-abstract {
+        max-width: 52rem;
+        color: var(--global-text-color, #111827);
+        line-height: 1.75;
+      }
+
+      .publication-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 0.15rem;
+      }
+
+      .publication-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2rem;
+        padding: 0.35rem 0.85rem;
+        border: 1px solid rgba(25, 35, 52, 0.12);
+        border-radius: 999px;
+        color: inherit;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: transform 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+      }
+
+      .publication-links a:hover {
+        color: #1f4b99;
+        border-color: rgba(31, 75, 153, 0.35);
+        transform: translateY(-1px);
+      }
+
+      @media (max-width: 900px) {
+        .publication-card {
+          grid-template-columns: 1fr;
+        }
+
+        .publication-media {
+          max-width: 24rem;
+        }
+      }
+    </style>
+
+    <p class="publications-intro">
+      Publications are grouped by year. Each entry includes a preview image slot, and entries without one fall back to
+      the default placeholder.
+    </p>
+    {% bibliography --template bib --group_by year --group_order descending %}
+  </article>
+</div>

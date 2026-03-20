@@ -1,0 +1,210 @@
+cv:
+  name: Meghdad Kurmanji
+  label: AI Research Scientist
+  email: mk2296@cam.ac.uk
+  phone: "+44 7949 726 826"
+  website: https://meghdadk.github.io
+  location: Cambridge, UK
+  address:
+    street: ""
+    city: Cambridge
+    region: UK
+    postalCode: ""
+  image: ""
+  summary: AI Scientist with 8+ years of experience designing and deploying scalable generative AI systems across research and production settings. Expertise spans the full lifecycle of machine learning systems, from prototyping novel models to building robust, production-grade pipelines for enterprise applications. Proven ability in delivering impactful solutions in large-scale model training, multimodal learning, and AI safety, with publications in top-tier venues including NeurIPS and ICLR and competitive research funding for privacy-preserving and safety-critical AI systems.
+
+  social_networks:
+    - network: LinkedIn
+      username: meghdadk
+    - network: GitHub
+      username: meghdadk
+    - network: Google Scholar
+      username: 7t9HbecAAAAJ
+
+  sections:
+    Experience:
+      - company: IQVIA
+        position: AI Research Scientist
+        location: London, UK
+        start_date: 2026
+        end_date: present
+        highlights:
+          - Designed and trained transformer-based foundation models on longitudinal clinical data, enabling structured reasoning over long patient timelines.
+          - Developed agentic LLM systems for automated knowledge extraction and verification from large document collections using LangGraph and retrieval pipelines.
+
+      - company: University of Cambridge
+        position: Postdoctoral Research Associate
+        location: Cambridge, UK
+        start_date: 2024
+        end_date: 2026
+        highlights:
+          - Secured a GBP 150k Foresight AI Safety grant to advance research on mechanistic machine unlearning and AI safety.
+          - Co-led a EUR 530k-funded research project on scalable decentralized LLM pre-training with privacy-preserving and robust training pipelines.
+          - Developed novel machine unlearning techniques for efficient and secure data removal, addressing regulatory requirements such as GDPR compliance.
+          - Designed and evaluated distributed LLM training systems using PyTorch, Transformers, and MosaicML in large-scale environments.
+          - Built scalable evaluation pipelines for LLM fine-tuning across downstream tasks, improving reproducibility and benchmarking.
+          - Published research in top-tier venues including NeurIPS and ICLR.
+
+      - company: University of Warwick
+        position: Graduate Research Assistant
+        location: Coventry, UK
+        start_date: 2020
+        end_date: 2024
+        highlights:
+          - Pioneered machine unlearning algorithms addressing data deletion and privacy requirements in large-scale ML systems.
+          - Designed a continual learning framework achieving more than 10x throughput improvement compared to prior approaches.
+          - Developed a machine unlearning algorithm outperforming prior state-of-the-art methods by up to 10 percent across benchmarks.
+          - Secured GBP 150k research funding from Huawei for machine learning-based database indexing systems.
+          - Led collaborations with Google DeepMind, including co-organizing the NeurIPS 2023 Machine Unlearning Challenge.
+          - Co-authored more than 7 publications in NeurIPS, SIGMOD, and CIDR.
+
+      - company: Iran Telecommunication Research Center (ITRC)
+        position: Data Engineer
+        location: Tehran, Iran
+        start_date: 2019
+        end_date: 2020
+        highlights:
+          - Built an end-to-end big data pipeline from crawling to Hadoop and OLAP, reducing data onboarding time by 5x.
+          - Implemented scalable ETL workflows, achieving a 5x query speed-up.
+          - Integrated Elasticsearch with PowerBI dashboards, reducing reporting delays by 60 percent.
+
+      - company: Refah Retail Chain Stores Co.
+        position: Machine Learning Engineer
+        location: Tehran, Iran
+        start_date: 2017
+        end_date: 2019
+        highlights:
+          - Led development and deployment of a real-time computer vision system for customer footfall analysis, achieving 81 percent accuracy across 20 stores.
+          - Developed in-store heatmap analytics to optimize staffing and store layout decisions.
+          - Built a multimodal recommendation system combining LSTM and CNN models, increasing customer engagement by 15 percent.
+          - Implemented time-series regression models for customer behavior prediction.
+
+      - company: Sensifai
+        position: Deep Learning Engineer
+        location: Belgium (Remote)
+        start_date: 2016
+        end_date: 2017
+        highlights:
+          - Improved production audio classification accuracy by 9 percent using multimodal transfer learning techniques.
+          - Built an 88 percent accurate music mood classifier using spectrogram-based CNN models.
+          - Optimized distributed video crawling pipelines, achieving 1.8x throughput.
+
+    Education:
+      - institution: University of Warwick
+        location: Coventry, UK
+        area: Computer Science
+        studyType: PhD
+        start_date: 2020
+        end_date: 2024
+        highlights:
+          - "Thesis: Adaptability of ML-Based Database Systems (SIGMOD Honorable Mention Award)."
+          - Conducted the first study of data deletion in learned database systems (SIGMOD 2024).
+          - Developed SCRUB, a state-of-the-art unlearning algorithm for large-scale deep models (NeurIPS 2023).
+          - Proposed DDUp, a framework for efficient data insertion in learned database systems (SIGMOD 2023).
+          - Collaborated with Google DeepMind to launch the NeurIPS Machine Unlearning Challenge.
+
+      - institution: Tarbiat Modares University
+        location: Tehran, Iran
+        area: Computer Science
+        studyType: MSc
+        start_date: 2014
+        end_date: 2017
+        highlights:
+          - "Dissertation: Hand Gesture Recognition Using 2D and 3D Convolutional Neural Networks from Video."
+          - "GPA: 3.67/4."
+
+      - institution: Isfahan University of Technology
+        location: Isfahan, Iran
+        area: Computer Engineering
+        studyType: BSc
+        start_date: 2010
+        end_date: 2014
+        highlights:
+          - "GPA: 3.65/4."
+
+    Skills:
+      - name: Core Expertise
+        level: Advanced
+        keywords: LLM pre-training and fine-tuning, Decentralized ML, Machine Unlearning, AI Safety
+
+      - name: Programming
+        level: Advanced
+        keywords: Python, C++, SQL, Bash
+
+      - name: ML Frameworks
+        level: Advanced
+        keywords: PyTorch, TensorFlow, Hugging Face, Transformers
+
+      - name: Distributed Systems
+        level: Advanced
+        keywords: PyTorch DDP and FSDP, Ray, MosaicML, Slurm
+
+      - name: MLOps and Cloud
+        level: Advanced
+        keywords: Docker, CI/CD, AWS, Azure, Databricks, MLflow, Weights and Biases
+
+      - name: Data Systems
+        level: Advanced
+        keywords: SQL, NoSQL, OLAP, Hadoop, Learned Indices
+
+    Awards:
+      - title: Secured GBP 150k Foresight AI Safety Grant
+        date: 2026
+
+      - title: NeurIPS Top Reviewer Recognition
+        date: 2025
+
+      - title: SIGMOD Jim Gray Doctoral Dissertation Honorable Mention
+        date: 2025
+
+      - title: EUR 530k SPRIN-D Grant
+        date: 2024-2025
+        summary: Co-lead, CambridgeFlower
+
+      - title: Organizer, NeurIPS Machine Unlearning Workshop
+        date: 2023
+
+      - title: Best Presentation Award, WPCCS, University of Warwick
+        date: 2021
+
+      - title: Graduate Scholarship
+        date: 2020-2024
+        summary: GBP 25k per year, University of Warwick
+
+      - title: Research Grant
+        date: 2020-2024
+        summary: GBP 15k per year, Huawei
+
+    Publications:
+      - title: "DEPT: Decoupled Embeddings for Pre-training Language Models"
+        publisher: ICLR
+        releaseDate: 2025
+        summary: Top 1 percent paper on pre-training language models with decoupled embeddings.
+
+      - title: Bridge the Gaps between Machine Unlearning and AI Regulation
+        publisher: NeurIPS
+        releaseDate: 2025
+
+      - title: What Makes Unlearning Hard and What to Do About It
+        publisher: NeurIPS
+        releaseDate: 2024
+        url: https://arxiv.org/pdf/2406.01257
+
+      - title: Machine Unlearning in Learned Database Systems
+        publisher: SIGMOD
+        releaseDate: 2024
+        url: https://dl.acm.org/doi/pdf/10.1145/3639304
+
+      - title: Towards Unbounded Machine Unlearning
+        publisher: NeurIPS
+        releaseDate: 2023
+        url: https://arxiv.org/pdf/2302.09880.pdf
+
+      - title: "Detect, Distill and Update: Learned DB Systems Facing OOD Data"
+        publisher: SIGMOD
+        releaseDate: 2023
+        url: https://arxiv.org/pdf/2210.05508.pdf
+
+    References:
+      - label: Status
+        details: Available upon request
