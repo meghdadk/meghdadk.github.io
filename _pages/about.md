@@ -449,35 +449,13 @@ social: false
 
     <div class="news-shell">
       <ol class="news-list">
-        <li class="news-item">
-          <span class="news-date">January 2026</span>
-          <div class="news-copy">I started a new position as an AI Scientist at IQVIA.</div>
-        </li>
-        <li class="news-item">
-          <span class="news-date">January 2026</span>
-          <div class="news-copy">
-            Two papers got accepted to ICLR 2026:
-            <a href="https://arxiv.org/pdf/2510.05361">PDF 1</a>,
-            <a href="https://arxiv.org/pdf/2505.22549">PDF 2</a>.
-          </div>
-        </li>
-        <li class="news-item">
-          <span class="news-date">January 2026</span>
-          <div class="news-copy">
-            Our proposal received a GBP 150k grant through Foresight's AI Safety call. We will use interpretability to enable precise unlearning, even in challenging scenarios.
-          </div>
-        </li>
-        <li class="news-item">
-          <span class="news-date">December 2025</span>
-          <div class="news-copy">I attended NeurIPS in Copenhagen and presented 2 posters and 2 oral talks.</div>
-        </li>
-        <li class="news-item">
-          <span class="news-date">November 2025</span>
-          <div class="news-copy">
-            One paper was accepted at AAAI's Alignment Track:
-            <a href="https://openreview.net/forum?id=naUNy565N9#discussion">link</a>.
-          </div>
-        </li>
+        {% assign sorted_news = site.news | sort: "date" | reverse %}
+        {% for item in sorted_news limit: 5 %}
+          <li class="news-item">
+            <span class="news-date">{{ item.date | date: "%B %Y" }}</span>
+            <div class="news-copy">{{ item.content }}</div>
+          </li>
+        {% endfor %}
       </ol>
       <a class="news-link" href="/news/">View all news</a>
     </div>
